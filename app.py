@@ -13,11 +13,11 @@ import speech_recognition as sr
 if __name__ == "__main__":
     os.chdir("./cache")
 
-    filename = os.getenv("AUDIO")
-    lang = os.getenv("LANG")
+    filename = os.getenv("YTAUDIO")
+    lang = os.getenv("YTLANG")
 
     if not lang:
-        lang = "th-TH"
+        lang = "en-US"
 
     if not filename:
         for line in (
@@ -32,12 +32,23 @@ if __name__ == "__main__":
                 p2 = "Destination: "
                 if line.startswith(p2):
                     filename = line[len(p2) :]
-                    break
+                    continue
 
                 s2 = " has already been downloaded"
                 if line.endswith(s2):
                     filename = line[: -len(s2)]
-                    break
+                    continue
+
+            p1 = "[ffmpeg] "
+            if line.startswith(p1):
+                line = line[len(p1) :].rstrip()
+
+                p2 = "Destination: "
+                if line.startswith(p2):
+                    filename = line[len(p2) :]
+                    continue
+
+            print(line)
 
     if not filename:
         sys.exit(1)
@@ -48,4 +59,4 @@ if __name__ == "__main__":
     r = sr.Recognizer()
     with sr.AudioFile(audio) as source:
         audio = r.record(source)
-        print(r.recognize_google(audio, language=lang))
+        print(r.recognize_sphinx(audio, language=lang))

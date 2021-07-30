@@ -1,1 +1,1 @@
-Convert YouTube to text. Tested for Thai language.
+Convert YouTube to text. Tested for English language.
