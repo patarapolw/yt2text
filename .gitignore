@@ -1,0 +1,7 @@
+/.venv/
+*.wav
+*.wav.*
+*.m4a
+*.flac
+*.aiff
+tmp_*

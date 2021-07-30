@@ -1,0 +1,7 @@
+{
+    "python.pythonPath": "/home/polv/shared/linux/projects/yt2text/.venv/bin/python3.9",
+    "python.formatting.provider": "black",
+    "[python]": {
+        "editor.formatOnSave": true
+    }
+}
